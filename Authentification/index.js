@@ -5,10 +5,20 @@ const dotenv = require("dotenv").config();
 const { mongoose } = require("mongoose");
 const cookieParser = require("cookie-parser");
 const cors = require('cors');
+const { exec } = require('child_process');
 
 // Créer l'instance de l'application
 const app = express();
 
+exec('python3 --version', (error, stdout, stderr) => {
+  if (error) {
+    console.error(`Error: ${error}`);
+    return;
+  }
+  console.log(`Python Version: ${stdout}`);
+});
+
+console.log(process.env.MONGO_URL)
 // Connexion à la base de données
 mongoose
   .connect(process.env.MONGO_URL)
