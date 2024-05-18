@@ -10,7 +10,7 @@ const { exec } = require('child_process');
 // Créer l'instance de l'application
 const app = express();
 
-exec('python3 --version', (error, stdout, stderr) => {
+exec('python --version', (error, stdout, stderr) => {
   if (error) {
     console.error(`Error: ${error}`);
     return;
